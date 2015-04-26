@@ -13,15 +13,24 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <style type="text/css">
     .header {
-      margin: 0 -20% 2rem -20%;
-      padding: 2rem 20% 0 20%;
+      margin: 0 0 2rem 0;
+      padding: 2rem 20px 0 20px;
       background: #225599;
       color: #eee;
+    }
+
+    @media (min-width: 400px) {
+      .header {
+        padding-right: 7.5%;
+        padding-left: 7.5%;
+      }
     }
 
     @media (min-width: 550px) {
       .header {
         padding-top: 8rem;
+        padding-right: 10%;
+        padding-left: 10%;
       }
     }
 
@@ -40,13 +49,11 @@
   </style>
 </head>
 <body>
+  <!-- Header spacer -->
+  <div class="header">
+    <h1>Samuel Fadel</h1>
+  </div>
   <div class="container">
-    <!-- Header spacer -->
-    <div class="header row">
-      <div class="column">
-        <h1>Samuel Fadel</h1>
-      </div>
-    </div>
     <div class="row">
       <div class="eight columns">
         <!-- About -->
