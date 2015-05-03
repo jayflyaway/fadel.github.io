@@ -13,9 +13,8 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <style type="text/css">
     .header {
-      margin: 0 0 2rem 0;
       padding: 2rem 20px 0 20px;
-      background: #225599;
+      background-color: #0b3149;
       color: #eee;
     }
 
@@ -28,10 +27,23 @@
 
     @media (min-width: 550px) {
       .header {
-        padding-top: 8rem;
+        padding-top: 5rem;
         padding-right: 10%;
         padding-left: 10%;
       }
+    }
+
+    body {
+      color: #2e3436;
+      background-color: #e3e6db;
+    }
+
+    a {
+      color: #0b3149;
+    }
+
+    a:hover {
+      color: #d42d2d;
     }
 
     h1 > svg, h2 > svg, h3 > svg, p > svg {
@@ -39,8 +51,12 @@
       height: 0.825em;
     }
 
-    svg path {
-      fill: #225599;
+    h1 svg path, h2 svg path, h3 svg path {
+      fill: #0b3149;
+    }
+
+    h1:hover svg path, h2:hover svg path, h3:hover svg path {
+      fill: #d42d2d;
     }
 
     ul, ol {
@@ -77,7 +93,6 @@
           Publications
         </h3>
         <p>
-          <h4>2015</h4>
           <ul>
             <li><a href="http://dx.doi.org/10.1016/j.neucom.2014.07.071">http://dx.doi.org/10.1016/j.neucom.2014.07.071</a>
               <p>Fadel, S.G.; Fatore, F.M.; Duarte, F.S.L.G.; Paulovich, F.V.,
@@ -85,9 +100,6 @@
               for high-dimensional sparse spaces," <i>Neurocomputing</i>, Volume 150,
               Part B, 20 February 2015, Pages 546-556, ISSN 0925-2312.</p>
             </li>
-          </ul>
-          <h4>2014</h4>
-          <ul>
             <li><a href="http://dx.doi.org/10.1109/TVCG.2014.2346276">http://dx.doi.org/10.1109/TVCG.2014.2346276</a>
               <p>Duarte, F.S.L.G.; Sikansi, F.; Fatore, F.M.; Fadel, S.G.;
               Paulovich, F.V., "Nmap: A Novel Neighborhood Preservation
