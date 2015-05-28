@@ -10,7 +10,6 @@
   <link href="http://fonts.googleapis.com/css?family=Roboto:100,400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="icon" type="image/png" href="images/favicon.png">
   <style type="text/css">
     .header {
       padding: 2rem 20px 0 20px;
@@ -33,6 +32,16 @@
       }
     }
 
+    div.content-box {
+      padding: 1rem 3rem;
+      background-color: #ffffff;
+      margin-bottom: 3rem;
+    }
+
+    div.content-box h3 {
+      color: #0b3149;
+    }
+
     body {
       color: #2e3436;
       background-color: #e3e6db;
@@ -46,83 +55,55 @@
       color: #d42d2d;
     }
 
-    h1 > svg, h2 > svg, h3 > svg, p > svg {
-      width: 0.825em;
-      height: 0.825em;
-    }
-
-    h1 svg path, h2 svg path, h3 svg path {
-      fill: #0b3149;
-    }
-
-    h1:hover svg path, h2:hover svg path, h3:hover svg path {
-      fill: #d42d2d;
-    }
-
     ul, ol {
       list-style: inherit;
     }
   </style>
 </head>
 <body>
-  <!-- Header spacer -->
   <div class="header">
     <h1>Samuel Fadel</h1>
   </div>
   <div class="container">
     <div class="row">
       <div class="eight columns">
-        <!-- About -->
-        <h3>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64">
-            <path d="M36 44.163v-3.299c4.406-2.483 8-8.673 8-14.864 0-9.941 0-18-12-18s-12 8.059-12 18c0 6.191 3.594 12.382 8 14.864v3.299c-13.569 1.109-24 7.776-24 15.837h56c0-8.060-10.431-14.727-24-15.837z"></path>
-          </svg>
-          About
-        </h3>
-        <p>I am a graduate student at the University of São Paulo (USP)
-        researching on Information Visualization. I am currently pursuing a
-        Master's degree under the supervision of Prof.
-        <a href="http://sites.google.com/site/fpaulovich/">Fernando V. Paulovich</a>.</p>
+        <div class="content-box">
+          <!-- About -->
+          <h3>About</h3>
+          <p>I am a graduate student at the University of São Paulo (USP)
+          researching on Information Visualization. I am currently pursuing a
+          Master's degree under the supervision of Prof.
+          <a href="http://sites.google.com/site/fpaulovich/">Fernando V. Paulovich</a>.</p>
+        </div>
 
-        <!-- Publications -->
-        <h3>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
-            <path d="M458.903 178.538c-11.105-15.146-26.587-32.85-43.589-49.852s-34.706-32.482-49.852-43.589c-25.787-18.91-38.296-21.097-45.462-21.097h-184c-22.057 0-40 17.944-40 40v368c0 22.056 17.943 40 40 40h304c22.056 0 40-17.944 40-40v-248c0-7.166-2.186-19.675-21.097-45.462zM392.687 151.313c15.35 15.35 27.4 29.199 36.29 40.687h-76.977v-76.973c11.491 8.89 25.339 20.939 40.687 36.286v0zM448 472c0 4.336-3.664 8-8 8h-304c-4.336 0-8-3.664-8-8v-368c0-4.336 3.664-8 8-8 0 0 183.978-0.001 184 0v112c0 8.836 7.162 16 16 16h112v248z"></path>
-            <path d="M301.462 21.098c-25.787-18.911-38.296-21.098-45.462-21.098h-184c-22.056 0-40 17.944-40 40v368c0 19.316 13.764 35.479 32 39.195v-407.195c0-4.336 3.664-8 8-8h243.438c-4.823-3.96-9.514-7.63-13.976-10.902z"></path>
-          </svg>
-          Publications
-        </h3>
-        <p>
-          <ul>
-            <li><a href="http://dx.doi.org/10.1016/j.neucom.2014.07.071">http://dx.doi.org/10.1016/j.neucom.2014.07.071</a>
-              <p>Fadel, S.G.; Fatore, F.M.; Duarte, F.S.L.G.; Paulovich, F.V.,
-              "LoCH: A neighborhood-based multidimensional projection technique
-              for high-dimensional sparse spaces," <i>Neurocomputing</i>, Volume 150,
-              Part B, 20 February 2015, Pages 546-556, ISSN 0925-2312.</p>
-            </li>
-            <li><a href="http://dx.doi.org/10.1109/TVCG.2014.2346276">http://dx.doi.org/10.1109/TVCG.2014.2346276</a>
-              <p>Duarte, F.S.L.G.; Sikansi, F.; Fatore, F.M.; Fadel, S.G.;
-              Paulovich, F.V., "Nmap: A Novel Neighborhood Preservation
-              Space-filling Algorithm," <i>Visualization and Computer Graphics,
-                  IEEE Transactions on</i> , vol.20, no.12, pp.2063,2071, Dec. 31
-              2014.</p>
-            </li>
-          </ul>
-        </p>
+        <div class="content-box">
+          <!-- Publications -->
+          <h3>Publications</h3>
+          <p>
+            <ul>
+              <li><a href="http://dx.doi.org/10.1016/j.neucom.2014.07.071">http://dx.doi.org/10.1016/j.neucom.2014.07.071</a>
+                <p>Fadel, S.G.; Fatore, F.M.; Duarte, F.S.L.G.; Paulovich, F.V.,
+                "LoCH: A neighborhood-based multidimensional projection technique
+                for high-dimensional sparse spaces," <i>Neurocomputing</i>, Volume 150,
+                Part B, 20 February 2015, Pages 546-556, ISSN 0925-2312.</p>
+              </li>
+              <li><a href="http://dx.doi.org/10.1109/TVCG.2014.2346276">http://dx.doi.org/10.1109/TVCG.2014.2346276</a>
+                <p>Duarte, F.S.L.G.; Sikansi, F.; Fatore, F.M.; Fadel, S.G.;
+                Paulovich, F.V., "Nmap: A Novel Neighborhood Preservation
+                Space-filling Algorithm," <i>Visualization and Computer Graphics,
+                    IEEE Transactions on</i> , vol.20, no.12, pp.2063,2071, Dec. 31
+                2014.</p>
+              </li>
+            </ul>
+          </p>
+        </div>
       </div>
       <div class="four columns">
-        <!-- Contact -->
-        <h3>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
-            <path d="M12 0v64h48v-64h-48zM36 16.021c4.407 0 7.979 3.573 7.979 7.979s-3.572 7.979-7.979 7.979-7.979-3.573-7.979-7.979 3.573-7.979 7.979-7.979v0zM48 48h-24v-4c0-4.419 3.582-8 8-8v0h8c4.419 0 8 3.581 8 8v4z"></path>
-            <path d="M4 4h6v12h-6v-12z"></path>
-            <path d="M4 20h6v12h-6v-12z"></path>
-            <path d="M4 36h6v12h-6v-12z"></path>
-            <path d="M4 52h6v12h-6v-12z"></path>
-          </svg>
-          Contact
-        </h3>
-        <p>Email: <a style="line-height: 1em;" href="mailto:samuel.fadel@usp.br">samuel.fadel@usp.br</a></p>
+        <div class="content-box">
+          <!-- Contact -->
+          <h3>Contact</h3>
+          <p>Email: <a style="line-height: 1em;" href="mailto:samuel.fadel@usp.br">samuel.fadel@usp.br</a></p>
+        </div>
       </div>
     </div>
   </div>
