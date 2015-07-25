@@ -19,6 +19,16 @@
     }
 
     @media (min-width: 400px) {
+      span#photo {
+        background: url("img/fadel.jpg") no-repeat content-box;
+        background-size: 100% 100%;
+        display: inline-block;
+        vertical-align: middle;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 4rem;
+      }
+
       .header {
         padding-right: 7.5%;
         padding-left: 7.5%;
@@ -26,6 +36,12 @@
     }
 
     @media (min-width: 550px) {
+      span#photo {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 5rem;
+      }
+
       .header {
         padding-top: 5rem;
         padding-right: 10%;
@@ -89,7 +105,7 @@
 </head>
 <body>
   <div class="header">
-    <h1>Samuel Fadel</h1>
+    <h1><span id="photo"></span> Samuel Fadel</h1>
   </div>
   <div class="container">
     <div class="row">
@@ -104,8 +120,8 @@
         </div>
 
         <div class="content-box">
-          <!-- Publications -->
-          <h3>Publications</h3>
+          <!-- Recent work -->
+          <h3>Recent work</h3>
           <p>
             <ul>
               <li>
