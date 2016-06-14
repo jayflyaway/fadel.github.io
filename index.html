@@ -15,48 +15,43 @@
     }
 
     body {
-      color: #555555;
-      background-color: #f8f8f8;
+      color: #444444;
+      background-color: #fafafa;
+      line-height: 1.5rem;
       font-weight: 400;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      color: #111111;
-      font-weight: 400;
+      color: #000000;
+      font-weight: 200;
     }
 
-    #photo {
-      background: url("img/fadel.png") no-repeat content-box;
-      background-size: 100% 100%;
-      display: inline-block;
-      vertical-align: middle;
-      width: 10em;
-      height: 10em;
-      border-radius: 5em;
-    }
-
-    main, section {
+    header, footer, main, section {
       max-width: 768px;
       margin: 0 auto;
     }
 
     header, footer {
-      text-align: center;
-      padding: 2rem 0;
+        padding: 2rem 0;
+        text-align: center;
     }
 
-    header { background-color: #2d3d4d; }
-    footer { font-size: 90%; }
-
-    header h1 {
-      color: #eeeeee;
-      font-weight: 300;
-    }
-
+    footer { font-size: 0.9rem; }
     section { padding: 0.5rem 2rem; }
     main { padding: 1.5rem 0; }
 
-    a, a:hover, a:visited, a:active { color: #0088dd; }
+    a, a:visited { color: #0066aa; }
+    a:hover, a:active { color: #0088dd; }
+
+    #photo {
+      background: url("img/fadel.png") no-repeat content-box;
+      background-size: 100% 100%;
+      border-radius: 5em;
+      display: inline-block;
+      height: 10em;
+      vertical-align: middle;
+      width: 10em;
+    }
 
     #links svg.icon {
       width: 2em;
@@ -65,8 +60,8 @@
 
     #links a { margin: 0 0.5em; }
     #links a svg.icon { vertical-align: middle; }
-    #links a svg.icon path { fill: #7d8d9d; }
-    #links a:hover svg.icon path { fill: #ffffff; }
+    #links a svg.icon path { fill: #444444; }
+    #links a:hover svg.icon path { fill: #0066aa; }
 
     .menu-horizontal .menu-list {
       margin: 0;
@@ -119,46 +114,39 @@
 
   <main>
     <section>
-      <h2>About</h2>
+      <h1>About</h1>
       <p>I received my BSc degree in Computer Science from the <a href="http://www.usp.br/">University of São Paulo</a> (USP).
       I am currently pursuing a Master's degree at USP, researching on Information Visualization.
       My advisor is prof. <a href="http://sites.google.com/site/fpaulovich/">Fernando Paulovich</a>.</p>
     </section>
 
     <section>
-      <h2>Recent work</h2>
+      <h1>Recent work</h1>
       <ul>
         <li>
-          <h3>LoCH: A neighborhood-based multidimensional projection technique for high-dimensional sparse spaces</h3>
-          <p>
-            <div><b>Fadel, S.G.</b>; Fatore, F.M.; Duarte, F.S.L.G.; Paulovich, F.V.</div>
-            <div><i>Neurocomputing</i></div>
-            <div>DOI: <a href="http://dx.doi.org/10.1016/j.neucom.2014.07.071">10.1016/j.neucom.2014.07.071</a></div>
-          </p>
+          <b>LoCH: A neighborhood-based multidimensional projection technique for high-dimensional sparse spaces.</b>
+          Fadel, S.G.; Fatore, F.M.; Duarte, F.S.L.G.; Paulovich, F.V.
+          <em>Neurocomputing.</em>
+          DOI: <a href="http://dx.doi.org/10.1016/j.neucom.2014.07.071">10.1016/j.neucom.2014.07.071</a>.
         </li>
+
         <li>
-          <h3>Nmap: A Novel Neighborhood Preservation Space-filling Algorithm</h3>
-          <p>
-            <div>Duarte, F.S.L.G.; Sikansi, F.; Fatore, F.M.; <b>Fadel, S.G.</b>; Paulovich, F.V.</div>
-            <div><i>IEEE Transactions on Visualization and Computer Graphics</i></div>
-            <div>DOI: <a href="http://dx.doi.org/10.1109/TVCG.2014.2346276">10.1109/TVCG.2014.2346276</a></div>
-          </p>
+          <b>Nmap: A Novel Neighborhood Preservation Space-filling Algorithm.</b>
+          Duarte, F.S.L.G.; Sikansi, F.; Fatore, F.M.; Fadel, S.G.; Paulovich, F.V.
+          <em>IEEE Transactions on Visualization and Computer Graphics.</em>
+          DOI: <a href="http://dx.doi.org/10.1109/TVCG.2014.2346276">10.1109/TVCG.2014.2346276</a>.
         </li>
       </ul>
     </section>
 
     <section>
-      <h2>Other projects</h2>
-      <ul>
-        <li>
-          <h3>mp (R package)</h3>
-          <p>
-            I have developed, jointly with Francisco Fatore, the <a href="https://cran.r-project.org/package=mp">mp</a> package for <a href="https://www.r-project.org/">R</a>.
-            It contains implementations of some multidimensional projection techniques, useful for visualizing high dimensional data.
-            Hoping to achieve very good performance, many techniques are written in C++ using <a href="http://arma.sourceforge.net/">armadillo</a> (with <a href="https://cran.r-project.org/package=Rcpp">Rcpp</a> and <a href="https://cran.r-project.org/package=RcppArmadillo">RcppArmadillo</a>).
-          </p>
-        </li>
-      </ul>
+      <h1>Other projects</h1>
+      <h2>mp (R package)</h2>
+      <p>
+        I have developed, jointly with Francisco Fatore, the <a href="https://cran.r-project.org/package=mp">mp</a> package for <a href="https://www.r-project.org/">R</a>.
+        It contains implementations of some multidimensional projection techniques, useful for visualizing high dimensional data.
+        Hoping to achieve very good performance, many techniques are written in C++ using <a href="http://arma.sourceforge.net/">armadillo</a> (with <a href="https://cran.r-project.org/package=Rcpp">Rcpp</a> and <a href="https://cran.r-project.org/package=RcppArmadillo">RcppArmadillo</a>).
+      </p>
     </section>
   </main>
 
