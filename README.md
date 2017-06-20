@@ -3,7 +3,7 @@
 
 ## About
 I am currently pursuing a PhD in Computer Science at the [RECOD Lab](http://www.recod.ic.unicamp.br/), [Institute of Computing](https://www.ic.unicamp.br/) (IC), [UNICAMP](https://www.unicamp.br/), advised by prof. [Ricardo Torres](http://www.ic.unicamp.br/~rtorres/).
-My research interests include: pattern recognition, reinforcement learning, and recurrent neural networks.
+My research interests are mostly on supervised, unsupervised, and reinforcement learning using neural networks.
 
 I have a MSc in CS, from the [University of São Paulo](http://www.usp.br/) (USP), advised by prof. [Fernando Paulovich](http://sites.google.com/site/fpaulovich/).
 I also have a BSc in CS from USP.
