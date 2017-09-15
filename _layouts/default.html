@@ -9,23 +9,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/normalize.css">
   <style type="text/css">
-    * { font-family: sans-serif; }
+    * {
+      font-family: sans-serif;
+    }
 
     body {
-      color: #444444;
       background-color: #fafafa;
-      margin: 2rem 1rem;
+      color: #444444;
+      margin: 1rem;
     }
 
     #content {
-      max-width: 768px;
+      background-color: #fafafa;
       margin: 0 auto;
+      max-width: 768px;
     }
 
-    h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: normal;
+    }
 
-    a, a:visited { color: #0066aa; }
-    a:hover, a:active { color: #0088dd; }
+    a, a:visited {
+      color: #0066aa;
+    }
+    a:hover, a:active {
+      color: #0088dd;
+    }
+
+    @media screen and (min-width: 960px) {
+      body {
+        background-color: #eaeaea;
+        margin: 2rem 0;
+      }
+
+      #content {
+        box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+        padding: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
