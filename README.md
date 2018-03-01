@@ -31,4 +31,4 @@ It contains implementations of some multidimensional projection techniques, usef
 Hoping to achieve very good performance, many techniques are written in C++ using [armadillo](http://arma.sourceforge.net/) (with [Rcpp](https://cran.r-project.org/package=Rcpp) and [RcppArmadillo](https://cran.r-project.org/package=RcppArmadillo)).
 
 ## Contact
-You can find me at samuel *dot* fadel at DOMAIN, where DOMAIN is either ic *dot* unicamp *dot* br or usp *dot* br.
+You can find me at samuel *dot* fadel at DOMAIN, where DOMAIN is ic *dot* unicamp *dot* br.
