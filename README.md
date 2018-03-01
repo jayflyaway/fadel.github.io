@@ -1,6 +1,3 @@
-# Samuel G. Fadel
-![Picture](img/fadel.png)
-
 ## About
 I am currently pursuing a PhD in Computer Science at the [RECOD Lab](http://www.recod.ic.unicamp.br/), [Institute of Computing](https://www.ic.unicamp.br/) (IC), [UNICAMP](https://www.unicamp.br/), advised by prof. [Ricardo Torres](http://www.ic.unicamp.br/~rtorres/).
 My research interests are mostly on supervised, unsupervised, and reinforcement learning using neural networks.
