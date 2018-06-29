@@ -3,30 +3,18 @@ I am currently pursuing a PhD in Computer Science at the [RECOD Lab](http://www.
 My research interests are mostly on supervised, unsupervised, and reinforcement learning using neural networks.
 
 I have a MSc in CS, from the [University of São Paulo](https://www.usp.br/) (USP), advised by prof. [Fernando Paulovich](http://sites.google.com/site/fpaulovich/).
-During that time, I spent 3 months with the [Scientific Visualization and Computer Graphics](http://www.cs.rug.nl/svcg/) ([University of Groningen](https://www.rug.nl/), Netherlands), advised by prof. [Alex Telea](http://www.cs.rug.nl/~alext/).
+During that time, I spent 3 months with the [Scientific Visualization and Computer Graphics](http://www.cs.rug.nl/svcg/) research group ([University of Groningen](https://www.rug.nl/), Netherlands), advised by prof. [Alex Telea](http://www.cs.rug.nl/~alext/).
 
 I also have a BSc in CS from USP.
 
-* [dblp](https://dblp.uni-trier.de/pers/hd/f/Fadel:Samuel_G=)
-* [Google Scholar](https://scholar.google.com.br/citations?user=IV7luZsAAAAJ&hl=en)
-* [GitHub](https://github.com/fadel/)
 * [Lattes CV](http://lattes.cnpq.br/3874774171103553)
 
-## Recent publications
-* __UPDis: A user-assisted projection technique for distance information__  
-  Neves, T.T.A.T; Fadel, S.G.; Hilasaca, G.M; Fatore, F.M.; Paulovich, F.V.  
-  _Information Visualization_  
-  [10.1177/1473871617700683](https://dx.doi.org/10.1177/1473871617700683)
-* __Visualizing the Hidden Activity of Artificial Neural Networks__  
-  Rauber, P.E.; Fadel, S.G.; Falcao, A.; Telea, A.  
-  _IEEE Transactions on Visualization and Computer Graphics_  
-  [10.1109/TVCG.2016.2598838](https://dx.doi.org/10.1109/TVCG.2016.2598838)
-* __LoCH: A neighborhood-based multidimensional projection technique for high-dimensional sparse spaces__  
-  Fadel, S.G.; Fatore, F.M.; Duarte, F.S.L.G.; Paulovich, F.V.  
-  _Neurocomputing_  
-  [10.1016/j.neucom.2014.07.071](https://dx.doi.org/10.1016/j.neucom.2014.07.071)
+## Publications
+* [dblp](https://dblp.uni-trier.de/pers/hd/f/Fadel:Samuel_G=)
+* [Google Scholar](https://scholar.google.com.br/citations?user=IV7luZsAAAAJ&hl=en)
 
 ## Other projects
+* [GitHub](https://github.com/fadel/)
 
 ### mp (R package)
 I have developed, jointly with Francisco Fatore, the [mp](https://cran.r-project.org/package=mp) package for [R](https://www.r-project.org/).
