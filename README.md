@@ -8,18 +8,11 @@ During that time, I spent 3 months with the [Scientific Visualization and Comput
 I also have a BSc in CS from USP.
 
 * [Lattes CV](http://lattes.cnpq.br/3874774171103553)
+* [GitHub](https://github.com/fadel/)
 
 ## Publications
 * [dblp](https://dblp.uni-trier.de/pers/hd/f/Fadel:Samuel_G=)
 * [Google Scholar](https://scholar.google.com.br/citations?user=IV7luZsAAAAJ&hl=en)
-
-## Other projects
-* [GitHub](https://github.com/fadel/)
-
-### mp (R package)
-I have developed, jointly with Francisco Fatore, the [mp](https://cran.r-project.org/package=mp) package for [R](https://www.r-project.org/).
-It contains implementations of some multidimensional projection techniques, useful for visualizing high dimensional data.
-Hoping to achieve very good performance, many techniques are written in C++ using [armadillo](http://arma.sourceforge.net/) (with [Rcpp](https://cran.r-project.org/package=Rcpp) and [RcppArmadillo](https://cran.r-project.org/package=RcppArmadillo)).
 
 ## Contact
 You can find me at samuel *dot* fadel *at* DOMAIN, where DOMAIN is __ic *dot* unicamp *dot* br__.
