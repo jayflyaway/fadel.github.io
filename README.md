@@ -1,6 +1,6 @@
 ## About
 I am currently pursuing a PhD in Computer Science at the [RECOD Lab](http://www.recod.ic.unicamp.br/) ([Institute of Computing](https://www.ic.unicamp.br/), [UNICAMP](https://www.unicamp.br/)), advised by prof. [Ricardo Torres](http://www.ic.unicamp.br/~rtorres/).
-My research interests are mostly on supervised, unsupervised, and reinforcement learning using neural networks.
+My main research interests are on supervised, unsupervised, and reinforcement learning with structured (relational) representations.
 
 I have a MSc in CS, from the [University of São Paulo](https://www.usp.br/) (USP), advised by prof. [Fernando Paulovich](http://sites.google.com/site/fpaulovich/).
 During that time, I spent 3 months with the [Scientific Visualization and Computer Graphics](http://www.cs.rug.nl/svcg/) research group ([University of Groningen](https://www.rug.nl/), Netherlands), advised by prof. [Alex Telea](http://www.cs.rug.nl/~alext/).
