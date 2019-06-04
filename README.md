@@ -7,6 +7,7 @@ During that time, I spent 3 months with the [Scientific Visualization and Comput
 
 I also have a BSc in CS from USP.
 
+* [ORCID](https://orcid.org/0000-0002-4459-4336)
 * [Lattes CV](http://lattes.cnpq.br/3874774171103553)
 * [GitHub](https://github.com/fadel/)
 
