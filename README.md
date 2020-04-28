@@ -17,7 +17,7 @@ Links:
 ## Publications
 
 * [dblp](https://dblp.uni-trier.de/pers/hd/f/Fadel:Samuel_G=)
-* [Google Scholar](https://scholar.google.com.br/citations?user=IV7luZsAAAAJ&hl=en)
+* [Google Scholar](https://scholar.google.com/citations?user=IV7luZsAAAAJ)
 
 ## Contact
 
