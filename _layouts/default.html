@@ -15,7 +15,8 @@
       line-height: 1.5em;
       background-color: #fafafa;
       color: #444444;
-      margin: 2rem 1rem;
+      margin: 1em;
+      padding: 2em;
     }
 
     a, a:visited {
@@ -93,6 +94,7 @@
     }
 
     #timeline {
+      padding-left: 1em;
       list-style-type: none;
     }
 
@@ -102,7 +104,7 @@
       font-weight: bold;
       position: relative;
       line-height: 1em;
-      left: 1em;
+      left: 0.5em;
     }
 
     #timeline li::before {
@@ -111,7 +113,7 @@
        display: block;
        top: 0.25em;
        position: absolute;
-       left: -1em;
+       left: -1.25em;
        border-radius: 100%;
        background-color: #cccccc;
        content: '';
@@ -120,7 +122,7 @@
 
     #timeline ul {
       margin: 0;
-      padding: 1em;
+      padding: 0.5em;
       list-style-type: none;
     }
 
@@ -129,7 +131,7 @@
       height: 100%;
       border-left: 0.1em solid #cccccc;
       top: 0;
-      left: -0.78em;
+      left: -1em;
       content: '';
     }
 
@@ -145,8 +147,33 @@
 
     @media screen and (min-width: 62em) {
       body {
-        margin: 2rem 0;
-        padding: 0 2rem 2rem 2rem;
+        margin: 2em;
+        padding: 2em;
+      }
+
+      #timeline {
+        padding-left: 2em;
+      }
+
+      #timeline li {
+        left: 1em;
+      }
+
+      #timeline li::before {
+         top: 0.25em;
+         left: -1em;
+      }
+
+      #timeline ul {
+        padding: 1em;
+      }
+
+      #timeline ul::before {
+        left: -0.78em;
+      }
+
+      #timeline ul li {
+        margin: 0.5em 0;
       }
     }
   </style>
