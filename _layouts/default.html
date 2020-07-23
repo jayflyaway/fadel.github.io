@@ -7,15 +7,15 @@
   <meta name="description" content="{{ site.description }}">
   <meta name="author" content="Samuel G. Fadel">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+  <!--link rel="stylesheet" href="css/normalize.css"-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
   <style type="text/css">
     body {
-      font-family: "Roboto", sans-serif;
-      line-height: 1.5em;
+      line-height: 2.5rem;
       background-color: #fafafa;
-      color: #444444;
-      margin: 2em;
+      margin: 2.5rem;
     }
 
     a, a:visited {
@@ -28,7 +28,7 @@
 
     #header, #content {
       margin: 0 auto;
-      max-width: 36em;
+      max-width: 80rem;
     }
 
     #header {
@@ -37,32 +37,22 @@
       align-items: center;
     }
 
-    #header h1 {
-      font-size: 1.5em;
-    }
-
     #header #picture {
-      width: 8em;
+      width: 16rem;
+      height: 16rem;
       border-radius: 50%;
     }
 
-    #header ul.info {
-      list-style: none;
+    #info {
+      list-style-type: none;
+    }
+
+    #info, #info li {
       margin: 0;
       padding: 0;
     }
 
-    #header ul.info li {
-      margin: 0;
-      padding: 0;
-      color: #777777;
-    }
-
-    #header ul.info li .email {
-      color: #000000;
-    }
-
-    #header ul.links {
+    #links {
       display: flex;
       flex-flow: row wrap;
       align-content: center;
@@ -70,34 +60,26 @@
       padding: 0;
     }
 
-    #header ul.links li {
+    #links li {
       display: inline-flex;
-      margin: 0.25em;
-      padding: 0 0.5em;
+      margin: 0.25rem;
+      padding: 0 0.5rem;
       white-space: nowrap;
       align-items: center;
     }
 
-    #header ul.links a, #header ul.links svg {
-      margin: 0.25em;
+    #links a, #links svg {
+      margin: 0.5rem;
     }
 
-    #header ul.links svg {
-      width: 1.5em;
-      height: 1.5em;
-    }
-
-    #content h1, #content h2 {
-      margin-top: 3em;
-    }
-
-    #content h3, #content h4, #content h5, #content h6 {
-      margin-top: 1.5em;
+    #links svg {
+      width: 2.5rem;
+      height: 2.5rem;
     }
 
     #timeline {
-      padding-left: 1em;
       list-style-type: none;
+      padding-left: 2rem;
     }
 
     #timeline li {
@@ -105,76 +87,50 @@
       margin: 0;
       font-weight: bold;
       position: relative;
-      line-height: 1em;
-      left: 0.5em;
+      line-height: 1.5rem;
+      left: 0.5rem;
     }
 
     #timeline li::before {
-       width: 0.5em;
-       height: 0.5em;
-       display: block;
-       top: 0.25em;
-       position: absolute;
-       left: -1.25em;
-       border-radius: 50%;
-       background-color: #cccccc;
-       content: '';
-       line-height: 0.5em;
+      width: 1rem;
+      height: 1rem;
+      display: block;
+      top: 0.333rem;
+      position: absolute;
+      left: -2rem;
+      border-radius: 50%;
+      background-color: #cccccc;
+      content: '';
     }
 
     #timeline ul {
       margin: 0;
-      padding: 0.5em;
+      padding: 1rem 0 2rem 0.5rem;
       list-style-type: none;
     }
 
     #timeline ul::before {
       position: absolute;
       height: 100%;
-      border-left: 0.1em solid #cccccc;
+      border-left: 0.1rem solid #cccccc;
       top: 0;
-      left: -1em;
+      left: -1.5rem;
       content: '';
     }
 
     #timeline ul li {
       padding: 0;
-      margin: 0.5em 0;
+      margin: 0.5rem 0;
       font-weight: normal;
     }
 
     #timeline ul li::before {
-        display: none;
+      display: none;
     }
 
-    @media screen and (min-width: 62em) {
+    @media (min-width: 80em) {
       body {
-        margin: 4em;
-      }
-
-      #timeline {
-        padding-left: 2em;
-      }
-
-      #timeline li {
-        left: 1em;
-      }
-
-      #timeline li::before {
-         top: 0.25em;
-         left: -1em;
-      }
-
-      #timeline ul {
-        padding: 1em;
-      }
-
-      #timeline ul::before {
-        left: -0.78em;
-      }
-
-      #timeline ul li {
-        margin: 0.5em 0;
+        margin: 5rem;
       }
     }
   </style>
@@ -182,14 +138,14 @@
 <body>
   <div id="header">
     <img id="picture" alt="Picture" src="img/fadel.jpg">
-    <h1>Samuel G. Fadel</h1>
-    <ul class="info">
+    <h3>Samuel G. Fadel</h3>
+    <ul id="info">
       <li>PhD candidate</li>
       <li>Institute of Information Systems, Leuphana University</li>
       <li>Institute of Computing, University of Campinas</li>
-      <li>📧 <span class="email">samuel.fadel@ic.unicamp.br</span></li>
+      <li><a>📧 samuel.fadel@ic.unicamp.br</a></li>
     </ul>
-    <ul class="links">
+    <ul id="links">
       <li><svg viewBox="0 0 1755.426 1755.426"><path fill="#727272" d="M 1571.466,195.028 V 70.538 L 1661.82,0 H 684.03801 L 93.606013,513.25003 H 485.17601 c -0.71,9.714 -1.002,18.498 -1.002,28.46 0,95.29 33.002,174.11 99.072,237.078 66.07,63.072 147.434,94.39 243.778,94.39 22.506,0 44.574,-1.682 66.004,-4.682 -13.29,29.718 -19.998,57.248 -19.998,82.936 0,45.144 20.568,93.39597 61.564,144.64797 -179.354,12.208 -311.136,44.492 -395.14,96.746 -48.142,29.71 -86.858,67.218 -116.07,112.142 -29.214,45.254 -43.784,93.784 -43.784,146.11 0,44.106 9.428,83.822 28.43,119.142 19.002,35.32 43.784,64.322 74.57,86.784 30.712,22.71 66.144,41.604 106.144,57 39.928,15.286 79.572,26.142 119.136,32.286 39.438,6.136 78.65,9.136 117.512,9.136 61.572,0 123.216,-7.928 185.35799,-23.712 61.996,-15.93 120.138,-39.504 174.496,-70.824 54.214,-31.108 98.356,-73.538 132.214,-126.712 33.784,-53.394 50.718,-113.394 50.718,-179.822 0,-50.358 -10.284,-96.176 -30.858,-137.786 -20.428,-41.472 -45.43,-75.616 -75.212,-102.144 -29.718,-26.572 -59.428,-50.996 -89.212,-72.996 -29.718,-22.148 -54.858,-44.57397 -75.286,-67.71597 -20.502,-23.07 -30.786,-45.962 -30.786,-68.498 0,-22.498 7.928,-44.214 23.844,-65.214 15.792,-21.072 35.08,-41.362 57.644,-60.826 22.572,-19.426 45.144,-40.996 67.642,-64.608 22.498,-23.53 41.786,-54.068 57.644,-91.466 15.93,-37.39 23.786,-79.748 23.786,-126.888 0,-61.49799 -11.644,-111.81999 -34.502,-152.28999 -2.714,-4.674 -5.566,-8.244 -8.572,-13.816 L 1514.458,116.75 v 78.256 c -33.8,4.25 -30.282,24.438 -30.282,48.618 v 588.19203 c 0,27.238 22.286,49.526 49.526,49.526 h 18.234 c 27.238,0 49.526,-22.286 49.526,-49.526 V 243.624 c 0,-24.122 3.554,-44.288 -29.996,-48.596 z m -490.788,1017.044 c 5.216,3.43 16.932,12.712 35.284,27.604 18.512,14.826 31.072,26.038 37.786,33.894 6.576,7.606 16.362,19.04 29.148,34.502 12.858,15.426 21.57,28.818 26.142,39.928 4.572,11.322 9.216,24.964 13.926,40.894 4.506,15.748 6.788,31.89 6.788,48.282 0,77.934 -30.004,135.68 -89.856,173.07 -60,37.398 -131.504,56.108 -214.57199,56.108 -41.998,0 -83.214,-4.996 -123.714,-14.606 -40.426,-9.676 -79.14,-24.394 -116.07,-43.894 -36.93,-19.464 -66.64,-46.644 -89.146,-81.356 -22.572,-34.926 -33.858,-75.038 -33.858,-119.998 0,-47.178 12.786,-88.182 38.502,-122.998 25.57,-34.86 59.144,-61.22 100.718,-79.156 41.428,-18.038 83.426,-30.822 125.996,-38.392 42.57,-7.782 85.928,-11.68 130.004,-11.68 20.428,0 36.278,1.148 47.56399,3.182 2.078,1.002 13.86,9.464 35.358,25.432 21.504,15.828 34.86,25.578 40.002,29.184 z m -15.352,-459.78397 c -33.858,40.5 -81.07199,60.746 -141.50199,60.746 -54.214,0 -101.932,-21.782 -142.928,-65.426 -41.142,-43.534 -70.502,-92.928 -88.43,-148.254 -18,-55.354 -26.998,-109.642 -26.998,-162.96199 0,-62.602 16.436,-115.89404 49.284,-159.89004 32.856,-44.112 79.996,-66.216 141.43,-66.216 54.286,0 102.282,23.032 143.712,69.288 41.57399,46.102 71.35799,97.88804 89.21999,155.28204 17.928,57.32199 26.85,112.13599 26.85,164.49799 0,61.47 -16.926,112.502 -50.636,152.934 z"/></svg> <a href="https://scholar.google.com/citations?user=IV7luZsAAAAJ">Google Scholar</a></li>
       <li><svg viewBox="0 0 256 256"><path fill="#a6ce39" d="M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z"/><path fill="#ffffff" d="M86.3,186.2H70.9V79.1h15.4v48.4V186.2z"/><path fill="#ffffff" d="M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5 c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z"/><path fill="#ffffff" d="M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1 C84.2,46.7,88.7,51.3,88.7,56.8z"/></svg> <a href="https://orcid.org/0000-0002-4459-4336">ORCID</a></li>
       <li><svg viewBox="0 0 1742.2704 1755.4316"><path fill="#585983" d="M 358.61368,1603.9957 C 170.32168,1218.1737 58.295677,985.16973 58.295677,979.38573 c 0,-9.436 11.506,-8.126 124.636003,14.058 198.97,39.06597 305.276,50.08797 482.48,50.15397 234.452,0.066 425.37002,-37.068 573.70402,-111.68197 78.474,-39.476 125.666,-74.474 164.316,-121.878 47.608,-58.426 62.902,-98.662 63.452,-166.386 0.482,-64.416 -8.2,-98.384 -45.472,-177.204 -14.746,-31.144 -27.7,-66.896 -28.936,-79.44 -1.93,-20.188 -0.278,-23.084 14.606,-24.802 32.52,-3.854 193.046,151.984 252.16,244.788 101.896,160.044 110.168,333.18 23.91,500.60397 -52.984,102.86 -111.542,174.028 -209.584,254.918 -162.94,134.348 -352.336,227.906 -613.86602,303.28 -140.478,40.514 -367.63,89.636 -414.412,89.636 -9.918,0 -28.526,-32.52 -86.536,-151.5 l -0.138,0.066 z m 52.436,-622.20597 c -182.922,-23.698 -336.420003,-44.302 -341.174003,-45.816 -8.126,-2.618 -37.2,-99.62 -53.6,-178.578 -4.132,-19.982 -10.1960005,-72.894 -13.5020005,-117.672 -14.7519995,-199.804 28.7240005,-337.942 145.2260035,-462.16 197.252,-210.132 619.586,-235.696 1096.07402,-66.348 83.638,29.762 116.846,50.432 101.486,63.312 -11.366,9.508 -88.394,9.37 -221.498,-0.416 -208.07002,-15.294 -366.46002,13.642 -448.10202,81.986 -124.292,104.032 -105.34,332.084 54.982,661.058 17.364,35.62 34.86,70.48 38.86,77.576 9.304,16.32597 2.552,31.48797 -13.642,30.72797 -6.898,-0.33 -162.194,-19.96 -345.11,-43.66597 z m 613.65402,-178.986 c -145.99402,-26.25 -277.24002,-116.78 -319.61202,-220.328 -20.326,-49.744 -19.36,-114.644 2.34,-153.498 19.638,-35.138 70.342,-75.784 115.748,-92.804 75.578,-28.314 207.93002,-17.02 304.38402,26.046 91.56,40.858 172.726,112.714 202.898,179.544 38.722,85.774 6.474,181.474 -76.478,227.152 -54.982,30.244 -161.836,46.022 -229.354,33.894 h 0.074 z"/></svg> <a href="http://lattes.cnpq.br/3874774171103553">Lattes CV</a></li>
