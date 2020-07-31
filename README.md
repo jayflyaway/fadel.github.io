@@ -16,7 +16,7 @@ My main research interests are on unsupervised learning, particularly with struc
   + Advised by Prof. [Ulf Brefeld](https://scholar.google.com/citations?user=oWmjswoAAAAJ)
 
 - 2016--present
-  + PhD. in Computer Science
+  + Ph.D. in Computer Science
   + [Institute of Computing](https://www.ic.unicamp.br/), [University of Campinas](https://www.unicamp.br/), 🇧🇷
   + Advised by Prof. [Ricardo Torres](https://scholar.google.com/citations?user=IGZ5WmgAAAAJ)
 
@@ -27,10 +27,10 @@ My main research interests are on unsupervised learning, particularly with struc
   + Advised by Prof. [Alex Telea](https://scholar.google.com/citations?user=VspO6ZUAAAAJ)
 
 - 2014--2016
-  + MSc. in Computer Science
+  + M.Sc. in Computer Science
   + Institute of Mathematical and Computer Sciences, [University of São Paulo](https://www.usp.br/), 🇧🇷
   + Advised by Prof. [Fernando Paulovich](https://scholar.google.com/citations?user=TmMJsJkAAAAJ)
 
 - 2010--2013
-  + BSc. in Computer Science
+  + B.Sc. in Computer Science
   + Institute of Mathematical and Computer Sciences, [University of São Paulo](https://www.usp.br/), 🇧🇷
