@@ -9,7 +9,8 @@ My main research interests are on unsupervised learning, particularly with struc
 ## Background
 
 {: #timeline}
-- 2019--present
+
+- 2019--2020
   + Visiting researcher
   + [ML3](http://ml3.leuphana.de/) research group
   + Institute of Information Systems, [Leuphana University](https://www.leuphana.de/), 🇩🇪
