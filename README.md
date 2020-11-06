@@ -11,7 +11,7 @@ My main research interests are on unsupervised learning, particularly with struc
 {: #timeline}
 
 - 2019--2020
-  + Visiting researcher
+  + Visiting researcher (15 months)
   + [ML3](http://ml3.leuphana.de/) research group
   + Institute of Information Systems, [Leuphana University](https://www.leuphana.de/), 🇩🇪
   + Advised by Prof. [Ulf Brefeld](https://scholar.google.com/citations?user=oWmjswoAAAAJ)
@@ -22,7 +22,7 @@ My main research interests are on unsupervised learning, particularly with struc
   + Advised by Prof. [Ricardo Torres](https://scholar.google.com/citations?user=IGZ5WmgAAAAJ)
 
 - 2015--2016
-  + Visiting researcher
+  + Visiting researcher (3 months)
   + [Scientific Visualization and Computer Graphics](http://www.cs.rug.nl/svcg/)
   + Bernoulli Institute for Mathematics, Computer Science and Artificial Intelligence, [University of Groningen](https://www.rug.nl/), 🇳🇱
   + Advised by Prof. [Alex Telea](https://scholar.google.com/citations?user=VspO6ZUAAAAJ)
