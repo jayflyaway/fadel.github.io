@@ -4,6 +4,7 @@ My main research interests are on unsupervised learning, particularly with struc
 
 * [dblp](https://dblp.uni-trier.de/pers/hd/f/Fadel:Samuel_G=)
 * [Google Scholar](https://scholar.google.com/citations?user=IV7luZsAAAAJ)
+* [Semantic Scholar](https://www.semanticscholar.org/author/Samuel-G.-Fadel/2420623)
 
 
 ## Background
