@@ -18,7 +18,7 @@ Prior to my PhD research, my research interests focused on data visualization.
   + Institute of Information Systems, [Leuphana University](https://www.leuphana.de/), 🇩🇪
   + Advised by Prof. [Ulf Brefeld](https://scholar.google.com/citations?user=oWmjswoAAAAJ)
 
-- 2016--present
+- 2017--2021
   + Ph.D. in Computer Science
   + [Institute of Computing](https://www.ic.unicamp.br/), [University of Campinas](https://www.unicamp.br/), 🇧🇷
   + Advised by Prof. [Ricardo Torres](https://scholar.google.com/citations?user=IGZ5WmgAAAAJ)
