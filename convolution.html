@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+  <meta charset="utf-8">
+  <title>Convolution demo</title>
+  <script src="js/umbrella.min.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
+  <style type="text/css">
+    :root {
+      /* http://clrs.cc/ */
+      --color-blue: #0074d9;
+      --color-aqua: #7fdbff;
+      --color-teal: #39cccc;
+      --color-olive: #3d9970;
+      --color-green: #2ecc40;
+      --color-lime: #01ff70;
+      --color-yellow: #ffdc00;
+      --color-orange: #ff851b;
+      --color-red: #ff4136;
+      --color-maroon: #85144b;
+      --color-fuchsia: #f012be;
+      --color-purple: #b10dc9;
+      --color-black: #111111;
+      --color-gray: #aaaaaa;
+      --color-silver: #dddddd;
+      --color-white: #ffffff;
+      --cell-stroke-color: var(--color-white);
+    }
+
+    header, main, footer {
+      max-width: 96rem;
+      margin: 0 auto;
+      padding: 2rem 4rem;
+    }
+
+    footer {
+      font-size: 1rem;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .label-input {
+      color: var(--color-blue);
+    }
+
+    .label-filter {
+      color: var(--color-red);
+    }
+
+    .label-output {
+      color: var(--color-olive);
+    }
+
+    .input-cell {
+      fill: var(--color-blue);
+    }
+
+    .padding-cell {
+      fill: var(--color-gray);
+    }
+
+    .filter-cell {
+      fill: var(--color-red);
+    }
+
+    .output-cell {
+      fill: var(--color-olive);
+    }
+
+    .input-cell, .padding-cell, .filter-cell, .output-cell {
+      opacity: 0.5;
+      stroke-width: 1px;
+      stroke: var(--cell-stroke-color);
+    }
+
+    .input-cell:hover, .padding-cell:hover, .filter-cell:hover, .output-cell:hover, .cell-hover {
+      opacity: 1.0;
+    }
+  </style>
+  </head>
+  <body>
+  <header>
+    <h1>2D Convolution</h1>
+    <p>Set the desired configuration and hover the <span class="label-output">output</span> elements to see which parts of the <span class="label-input">input</span> and <span class="label-filter">filters</span> were used to compute it.</p>
+  </header>
+  <main>
+    <h3>Settings</h3>
+    <form>
+      <fieldset>
+        <div class="row">
+          <div class="column">
+            <label for="inputWidth" class="label-input">Input width</label>
+            <input type="number" min="1" max="16" value="5" id="inputWidth">
+
+            <label for="inputHeight" class="label-input">Input height</label>
+            <input type="number" min="1" max="16" value="5" id="inputHeight">
+
+            <label for="inputChannels" class="label-input">Input channels</label>
+            <input type="number" min="1" max="16" value="3" id="inputChannels">
+          </div>
+          <div class="column">
+            <label for="filterWidth" class="label-filter">Filter width</label>
+            <input type="number" min="1" max="16" value="3" id="filterWidth">
+
+            <label for="filterHeight" class="label-filter">Filter height</label>
+            <input type="number" min="1" max="16" value="3" id="filterHeight">
+          </div>
+          <div class="column">
+            <label for="outputChannels" class="label-output">Output channels</label>
+            <input type="number" min="1" max="16" value="2" id="outputChannels">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <label for="padding">Padding</label>
+            <input type="number" min="0" max="16" value="0" id="padding">
+          </div>
+          <div class="column">
+            <label for="dilation">Dilation (<abbr title="How far apart individual filter elements are from each other">?</abbr>)</label>
+            <input type="number" min="1" max="16" value="1" id="dilation">
+          </div>
+          <div class="column">
+            <label for="stride">Stride (<abbr title="The number of elements by which the filter is displaced">?</abbr>)</label>
+            <input type="number" min="1" max="16" value="1" id="stride">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <h3>Preview</h3>
+    <svg id="drawing"></svg>
+  </main>
+  <footer>
+    <p class="float-right">Last updated: 13.05.2021<br>Samuel G. Fadel</p>
+  </footer>
+  <script type="text/javascript">
+    const options = {
+      inputWidth: 0,
+      inputHeight: 0,
+      inputChannels: 0,
+      filterWidth: 0,
+      filterHeight: 0,
+      outputChannels: 0,
+      padding: 0,
+      dilation: 0,
+      stride: 0,
+    };
+
+    function updateOptions() {
+      for (option in options) {
+        options[option] = parseInt(u("#" + option).first().value);
+      }
+    }
+
+    updateOptions();
+
+    function buildCells(width, height) {
+      var cells = [];
+      for (var i = 0; i < height; i++) {
+        for (var j = 0; j < width; j++) {
+          cells.push({row: i, column: j});
+        }
+      }
+      return cells;
+    }
+
+    function isPadding(element, width, height, padding) {
+      return (element.row < padding || element.row - padding >= height)
+        || (element.column < padding || element.column - padding >= width);
+    }
+
+    const svg = d3.select("#drawing");
+    const cellSize = 24;
+
+
+    function updateDrawing() {
+      const realInputWidth = options.inputWidth + 2 * options.padding;
+      const realInputHeight = options.inputHeight + 2 * options.padding;
+      const drawRect = u("#drawing").size();
+      u("#drawing").children().remove();
+
+      var g = svg.append("g");
+
+      const gInputChannels = g.append("g").attr("id", "input-channels").selectAll("g")
+        .data(Array(options.inputChannels).fill(0).map(function(value, index) { return index; }))
+        .enter()
+        .append("g")
+          .attr("id", function(d) { return "input-channel-" + d; })
+          .attr("class", "input-channel")
+          .attr("transform", function(d) {
+            return "translate(0, " + (cellSize * (realInputHeight + 1) * d) + ")";
+          });
+
+      gInputChannels
+        .selectAll("rect")
+          .data(buildCells(realInputWidth, realInputHeight))
+          .enter()
+          .append("rect")
+            .attr("id", function(d) { return "input-" + d.row + "-" + d.column; })
+            .attr("class", function(d) {
+              return isPadding(d, options.inputWidth, options.inputHeight, options.padding) ? "padding-cell" : "input-cell";
+            })
+            .attr("width", cellSize)
+            .attr("height", cellSize)
+            .attr("x", function(d) { return d.column * cellSize; })
+            .attr("y", function(d) { return d.row * cellSize; });
+
+      const filterBaseTranslation = (realInputWidth + 1) * cellSize;
+      const gFilterChannels = g
+        .append("g")
+          .attr("id", "filter-channels")
+          .attr("transform", "translate(" + filterBaseTranslation + ", 0)")
+        .selectAll("g")
+        .data(buildCells(options.outputChannels, options.inputChannels))
+        .enter()
+        .append("g")
+          .attr("id", function(d) { return "filter-channel-" + d.row + "-" + d.column; })
+          .attr("class", "filter-channel")
+          .attr("transform", function(d) {
+            const x = cellSize * (options.filterWidth + 1) * d.column;
+            const y = cellSize * (options.filterHeight + 1) * d.row;
+            return "translate(" + x + ", " + y + ")";
+          });
+
+      gFilterChannels
+        .selectAll("rect")
+          .data(buildCells(options.filterWidth, options.filterHeight))
+          .enter()
+          .append("rect")
+            .attr("id", function(d) { return "filter-" + d.row + "-" + d.column; })
+            .attr("class", "filter-cell")
+            .attr("width", cellSize)
+            .attr("height", cellSize)
+            .attr("x", function(d) { return d.column * cellSize; })
+            .attr("y", function(d) { return d.row * cellSize; });
+
+      const outputWidth = Math.floor((options.inputWidth + 2 * options.padding - options.dilation * (options.filterWidth - 1) - 1) / options.stride + 1);
+      const outputHeight = Math.floor((options.inputHeight + 2 * options.padding - options.dilation * (options.filterHeight - 1) - 1) / options.stride + 1);
+      const outputBaseTranslation = filterBaseTranslation + (options.filterWidth + 1) * options.outputChannels * cellSize;
+      const gOutputChannels = g
+        .append("g")
+          .attr("id", "output-channels")
+          .attr("transform", "translate(" + outputBaseTranslation + ", 0)")
+        .selectAll("g")
+        .data(Array(options.outputChannels).fill(0).map(function(value, index) { return index; }))
+        .enter()
+        .append("g")
+          .attr("id", function(d) { return "output-channel-" + d; })
+          .attr("class", "output-channel")
+          .attr("transform", function(d) {
+            return "translate(0, " + (cellSize * (outputHeight + 1) * d) + ")";
+          });
+
+      gOutputChannels
+        .selectAll("rect")
+          .data(buildCells(outputWidth, outputHeight))
+          .enter()
+          .append("rect")
+            .attr("id", function(d) { return "output-" + d.row + "-" + d.column; })
+            .attr("class", "output-cell")
+            .attr("width", cellSize)
+            .attr("height", cellSize)
+            .attr("x", function(d) { return d.column * cellSize; })
+            .attr("y", function(d) { return d.row * cellSize; });
+
+      const centerX = drawRect.width / 2 - (outputBaseTranslation + outputWidth * cellSize) / 2;
+      const centerY = 25; // h / 2
+      g.attr("transform", "translate(" + centerX + ", " + centerY + ")");
+
+      // Add labels on top
+      const labels = {input: "Input", filter: "Filters", output: "Output"};
+      for (key in labels) {
+        const selector = "#" + key + "-channels";
+        const label = d3.select(selector)
+          .append("text")
+            .text(labels[key]);
+        label
+          .attr("x", u(selector).size().width / 2 - u(selector + " text").size().width / 2)
+          .attr("y", -5);
+      }
+
+      // Figure out which inputs/filters are involved in computing each output
+      const activationMap = {};
+      for (var outputChannel = 0; outputChannel < options.outputChannels; outputChannel++) {
+        for (var oi = 0; oi < outputHeight; oi++) {
+          for (var oj = 0; oj < outputWidth; oj++) {
+            const selector = "#output-channel-" + outputChannel + " #output-" + oi + "-" + oj;
+            activationMap[selector] = [];
+            for (var inputChannel = 0; inputChannel < options.inputChannels; inputChannel++) {
+              for (var fi = 0; fi < options.filterHeight; fi++) {
+                for (var fj = 0; fj < options.filterWidth; fj++) {
+                  // first filters
+                  const filterSelector = "#filter-channel-" + inputChannel + "-" + outputChannel + " #filter-" + fi + "-" + fj;
+                  activationMap[selector].push(filterSelector);
+
+                  // then inputs
+                  const i = oi * options.stride + fi * options.dilation;
+                  const j = oj * options.stride + fj * options.dilation;
+                  const inputSelector = "#input-channel-" + inputChannel + " #input-" + i + "-" + j;
+                  activationMap[selector].push(inputSelector);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // Set up mouse events for visualizing interactions
+      for (selector in activationMap) {
+        const srcElement = u(selector);
+        const activatedElements = u(activationMap[selector].join(","));
+        srcElement.on("mouseover", () => {
+          activatedElements.addClass("cell-hover");
+        });
+        srcElement.on("mouseout", () => {
+          activatedElements.removeClass("cell-hover");
+        });
+      }
+
+      // Adjust SVG size based on contents
+      const size = u("#drawing g").size();
+      u("#drawing")
+        .attr("height", centerY + size.height);
+    }
+
+    updateDrawing();
+
+    // Set up events for redrawing whenever the settings change
+    for (option in options) {
+      const selector = "#" + option;
+      u(selector).on("change", function(e) {
+        updateOptions();
+        updateDrawing();
+      });
+    }
+  </script>
+  </body>
+</html>
