@@ -177,16 +177,14 @@
         || (element.column < padding || element.column - padding >= width);
     }
 
-    const svg = d3.select("#drawing");
-    const cellSize = 24;
-
-
     function updateDrawing() {
       const realInputWidth = options.inputWidth + 2 * options.padding;
       const realInputHeight = options.inputHeight + 2 * options.padding;
       const drawRect = u("#drawing").size();
+      const cellSize = Math.min(24, drawRect.width / 33.33);
       u("#drawing").children().remove();
 
+      const svg = d3.select("#drawing");
       var g = svg.append("g");
 
       const gInputChannels = g.append("g").attr("id", "input-channels").selectAll("g")
