@@ -180,8 +180,10 @@
     function updateDrawing() {
       const realInputWidth = options.inputWidth + 2 * options.padding;
       const realInputHeight = options.inputHeight + 2 * options.padding;
+      const outputWidth = Math.floor((options.inputWidth + 2 * options.padding - options.dilation * (options.filterWidth - 1) - 1) / options.stride + 1);
+      const outputHeight = Math.floor((options.inputHeight + 2 * options.padding - options.dilation * (options.filterHeight - 1) - 1) / options.stride + 1);
       const drawRect = u("#drawing").size();
-      const cellSize = Math.min(24, drawRect.width / 33.33);
+      const cellSize = Math.min(24, drawRect.width / (realInputWidth + (options.filterWidth + 1) * options.outputChannels + outputWidth + 2));
       u("#drawing").children().remove();
 
       const svg = d3.select("#drawing");
@@ -240,8 +242,6 @@
             .attr("x", function(d) { return d.column * cellSize; })
             .attr("y", function(d) { return d.row * cellSize; });
 
-      const outputWidth = Math.floor((options.inputWidth + 2 * options.padding - options.dilation * (options.filterWidth - 1) - 1) / options.stride + 1);
-      const outputHeight = Math.floor((options.inputHeight + 2 * options.padding - options.dilation * (options.filterHeight - 1) - 1) / options.stride + 1);
       const outputBaseTranslation = filterBaseTranslation + (options.filterWidth + 1) * options.outputChannels * cellSize;
       const gOutputChannels = g
         .append("g")
