@@ -172,7 +172,7 @@
 <body>
   <header>
     <h1>2D Convolution</h1>
-    <p>Set the desired configuration and hover the <span class="label-output">output</span> elements to see which parts of the <span class="label-input">input</span> and <span class="label-filter">filters</span> were used to compute it.</p>
+    <p>Set the desired configuration and hover the elements to see how <span class="label-input">input</span>, <span class="label-filter">filters</span>, and <span class="label-output">output</span> are related.</p>
   </header>
   <main>
     <section>
@@ -403,15 +403,19 @@
             for (var inputChannel = 0; inputChannel < options.inputChannels; inputChannel++) {
               for (var fi = 0; fi < options.filterHeight; fi++) {
                 for (var fj = 0; fj < options.filterWidth; fj++) {
-                  // first filters
                   const filterSelector = "#filter-channel-" + inputChannel + "-" + outputChannel + " #filter-" + fi + "-" + fj;
-                  activationMap[selector].push(filterSelector);
-
-                  // then inputs
                   const i = oi * options.stride + fi * options.dilation;
                   const j = oj * options.stride + fj * options.dilation;
                   const inputSelector = "#input-channel-" + inputChannel + " #input-" + i + "-" + j;
+
+                  activationMap[selector].push(filterSelector);
+                  if (!activationMap[filterSelector]) { activationMap[filterSelector] = []; }
+                  activationMap[filterSelector].push(selector);
+                  activationMap[filterSelector].push(inputSelector);
                   activationMap[selector].push(inputSelector);
+                  if (!activationMap[inputSelector]) { activationMap[inputSelector] = []; }
+                  activationMap[inputSelector].push(selector);
+                  activationMap[inputSelector].push(filterSelector);
                 }
               }
             }
