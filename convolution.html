@@ -101,15 +101,15 @@
       border: 0;
     }
 
-    .range-wrap {
+    .range-wrapper {
       position: relative;
     }
 
-    .range-wrap input[type="range"] {
+    .range-wrapper input[type=range] {
       margin-left: 5rem;
     }
 
-    .range-wrap output {
+    .range-wrapper output {
       cursor: default;
       text-align: center;
       width: 4rem;
@@ -121,7 +121,7 @@
       color: var(--text-color);
     }
 
-    .range-wrap input[type="range"], .range-wrap output {
+    .range-wrapper input[type=range], .range-wrapper output {
       height: 3rem;
       line-height: 3rem;
     }
@@ -182,39 +182,39 @@
         <div class="row">
           <div class="column">
             <label for="inputWidth" class="label-input">Input width</label>
-            <div class="range-wrap"><input type="range" min="1" max="16" value="5" id="inputWidth"></div>
+            <input type="range" min="1" max="16" value="5" id="inputWidth">
 
             <label for="inputHeight" class="label-input">Input height</label>
-            <div class="range-wrap"><input type="range" min="1" max="16" value="5" id="inputHeight"></div>
+            <input type="range" min="1" max="16" value="5" id="inputHeight">
 
             <label for="inputChannels" class="label-input">Input channels</label>
-            <div class="range-wrap"><input type="range" min="1" max="8" value="3" id="inputChannels"></div>
+            <input type="range" min="1" max="8" value="3" id="inputChannels">
           </div>
           <div class="column">
             <label for="filterWidth" class="label-filter">Filter width</label>
-            <div class="range-wrap"><input type="range" min="1" max="16" value="3" id="filterWidth"></div>
+            <input type="range" min="1" max="16" value="3" id="filterWidth">
 
             <label for="filterHeight" class="label-filter">Filter height</label>
-            <div class="range-wrap"><input type="range" min="1" max="16" value="3" id="filterHeight"></div>
+            <input type="range" min="1" max="16" value="3" id="filterHeight">
           </div>
           <div class="column">
             <label for="outputChannels" class="label-output">Output channels</label>
-            <div class="range-wrap"><input type="range" min="1" max="8" value="2" id="outputChannels"></div>
+            <input type="range" min="1" max="8" value="2" id="outputChannels">
           </div>
         </div>
 
         <div class="row">
           <div class="column">
             <label for="padding">Padding</label>
-            <div class="range-wrap"><input type="range" min="0" max="8" value="0" id="padding"></div>
+            <input type="range" min="0" max="8" value="0" id="padding">
           </div>
           <div class="column">
             <label for="dilation">Dilation (<abbr title="How far apart individual filter elements are from each other">?</abbr>)</label>
-            <div class="range-wrap"><input type="range" min="1" max="8" value="1" id="dilation"></div>
+            <input type="range" min="1" max="8" value="1" id="dilation">
           </div>
           <div class="column">
             <label for="stride">Stride (<abbr title="The number of elements by which the filter is displaced">?</abbr>)</label>
-            <div class="range-wrap"><input type="range" min="1" max="8" value="1" id="stride"></div>
+            <input type="range" min="1" max="8" value="1" id="stride">
           </div>
         </div>
       </fieldset>
@@ -230,9 +230,9 @@
   </footer>
   <script type="text/javascript">
     // Set up the output elements showing the value of each slider
-    const ranges = u(".range-wrap");
-    ranges.append("<output>");
-    ranges.each(node => {
+    const rangeWrappers = u("input[type=range]").wrap("<div>").addClass("range-wrapper");
+    rangeWrappers.append("<output>");
+    rangeWrappers.each(node => {
       const range = u(node).children("input");
       const bubble = u(node).children("output");
 
@@ -243,6 +243,7 @@
       bubble.text(range.first().value);
     });
 
+    // Used to organize options and map the settings inputs to variables
     const options = {
       inputWidth: 0,
       inputHeight: 0,
@@ -255,6 +256,7 @@
       stride: 0,
     };
 
+    // Takes all values from settings inputs and stores them in `options`
     function updateOptions() {
       for (option in options) {
         options[option] = parseInt(u("#" + option).first().value);
@@ -263,6 +265,7 @@
 
     updateOptions();
 
+    // Builds an array with cell coordinates (row, column)
     function buildCells(width, height) {
       var cells = [];
       for (var i = 0; i < height; i++) {
@@ -279,10 +282,14 @@
     }
 
     function updateDrawing() {
+      // Input sizes considering padding
       const realInputWidth = options.inputWidth + 2 * options.padding;
       const realInputHeight = options.inputHeight + 2 * options.padding;
+
       const outputWidth = Math.floor((options.inputWidth + 2 * options.padding - options.dilation * (options.filterWidth - 1) - 1) / options.stride + 1);
       const outputHeight = Math.floor((options.inputHeight + 2 * options.padding - options.dilation * (options.filterHeight - 1) - 1) / options.stride + 1);
+
+      // Cell sizes adjusted if the matrices are too big, otherwise we default
       const drawRect = u("#drawing").size();
       const cellSize = Math.min(24, drawRect.width / (realInputWidth + (options.filterWidth + 1) * options.outputChannels + outputWidth + 2));
       u("#drawing").children().remove();
@@ -424,7 +431,7 @@
         });
       }
 
-      // Adjust SVG size based on contents
+      // Adjust SVG height based on contents
       const size = u("#drawing g").size();
       u("#drawing")
         .attr("height", centerY + size.height);
