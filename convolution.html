@@ -11,35 +11,47 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
   <style type="text/css">
+     @media (prefers-color-scheme: light) {
+      :root {
+        --text-color: #2e3440;
+        --body-bg-color: #eceff4;
+        --bg-color: #f2f5fa;
+        --field-color: #e5e9f0;
+        --padding-color: #d8dee9;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-color: #eceff4;
+        --body-bg-color: #242933;
+        --bg-color: #2e3440;
+        --field-color: #3b4252;
+        --padding-color: #4c566a;
+      }
+    }
+
     :root {
-      /* http://clrs.cc/ */
-      --color-blue: #0074d9;
-      --color-aqua: #7fdbff;
-      --color-teal: #39cccc;
-      --color-olive: #3d9970;
-      --color-green: #2ecc40;
-      --color-lime: #01ff70;
-      --color-yellow: #ffdc00;
-      --color-orange: #ff851b;
-      --color-red: #ff4136;
-      --color-maroon: #85144b;
-      --color-fuchsia: #f012be;
-      --color-purple: #b10dc9;
-      --color-black: #111111;
-      --color-gray: #aaaaaa;
-      --color-silver: #dddddd;
-      --color-white: #ffffff;
-      --cell-stroke-color: var(--color-white);
+      --input-color: #5e81ac; /* blue */
+      --filter-color: #bf616a; /* red */
+      --output-color: #a3be8c; /* green */
+    }
+
+    body {
+      background-color: var(--bg-color);
     }
 
     header, main, footer {
       max-width: 96rem;
       margin: 0 auto;
       padding: 2rem 4rem;
+      color: var(--text-color);
     }
 
     footer {
       font-size: 1rem;
+      text-align: right;
+      opacity: 0.5;
     }
 
     svg {
@@ -47,38 +59,109 @@
       height: auto;
     }
 
+    svg text {
+      fill: var(--text-color);
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+ 
+    input[type=range]:focus {
+      outline: none;
+    }
+ 
+    input[type=range]::-moz-range-track {
+      background: var(--field-color);
+      height: 0.5rem;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      height: 0.5rem;
+      background: var(--field-color);
+    }
+ 
+    input[type=range]::-moz-range-thumb {
+      width: 1.6rem;
+      height: 1.6rem;
+      background: var(--text-color);
+      border-radius: 50%;
+      border: 0;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      margin-top: -0.5rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      background: var(--text-color);
+      border-radius: 50%;
+      border: 0;
+    }
+
+    .range-wrap {
+      position: relative;
+    }
+
+    .range-wrap input[type="range"] {
+      margin-left: 5rem;
+    }
+
+    .range-wrap output {
+      cursor: default;
+      text-align: center;
+      width: 4rem;
+      border-radius: 0.5rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--field-color);
+      color: var(--text-color);
+    }
+
+    .range-wrap input[type="range"], .range-wrap output {
+      height: 3rem;
+      line-height: 3rem;
+    }
+
     .label-input {
-      color: var(--color-blue);
+      color: var(--input-color);
     }
 
     .label-filter {
-      color: var(--color-red);
+      color: var(--filter-color);
     }
 
     .label-output {
-      color: var(--color-olive);
+      color: var(--output-color);
+    }
+
+    .label-input, .label-filter, .label-output {
+      font-weight: bold;
     }
 
     .input-cell {
-      fill: var(--color-blue);
+      fill: var(--input-color);
     }
 
     .padding-cell {
-      fill: var(--color-gray);
+      fill: var(--padding-color);
     }
 
     .filter-cell {
-      fill: var(--color-red);
+      fill: var(--filter-color);
     }
 
     .output-cell {
-      fill: var(--color-olive);
+      fill: var(--output-color);
     }
 
     .input-cell, .padding-cell, .filter-cell, .output-cell {
       opacity: 0.5;
       stroke-width: 1px;
-      stroke: var(--cell-stroke-color);
+      stroke: var(--bg-color);
     }
 
     .input-cell:hover, .padding-cell:hover, .filter-cell:hover, .output-cell:hover, .cell-hover {
@@ -92,56 +175,74 @@
     <p>Set the desired configuration and hover the <span class="label-output">output</span> elements to see which parts of the <span class="label-input">input</span> and <span class="label-filter">filters</span> were used to compute it.</p>
   </header>
   <main>
+    <section>
     <h3>Settings</h3>
     <form>
       <fieldset>
         <div class="row">
           <div class="column">
             <label for="inputWidth" class="label-input">Input width</label>
-            <input type="number" min="1" max="16" value="5" id="inputWidth">
+            <div class="range-wrap"><input type="range" min="1" max="16" value="5" id="inputWidth"></div>
 
             <label for="inputHeight" class="label-input">Input height</label>
-            <input type="number" min="1" max="16" value="5" id="inputHeight">
+            <div class="range-wrap"><input type="range" min="1" max="16" value="5" id="inputHeight"></div>
 
             <label for="inputChannels" class="label-input">Input channels</label>
-            <input type="number" min="1" max="16" value="3" id="inputChannels">
+            <div class="range-wrap"><input type="range" min="1" max="8" value="3" id="inputChannels"></div>
           </div>
           <div class="column">
             <label for="filterWidth" class="label-filter">Filter width</label>
-            <input type="number" min="1" max="16" value="3" id="filterWidth">
+            <div class="range-wrap"><input type="range" min="1" max="16" value="3" id="filterWidth"></div>
 
             <label for="filterHeight" class="label-filter">Filter height</label>
-            <input type="number" min="1" max="16" value="3" id="filterHeight">
+            <div class="range-wrap"><input type="range" min="1" max="16" value="3" id="filterHeight"></div>
           </div>
           <div class="column">
             <label for="outputChannels" class="label-output">Output channels</label>
-            <input type="number" min="1" max="16" value="2" id="outputChannels">
+            <div class="range-wrap"><input type="range" min="1" max="8" value="2" id="outputChannels"></div>
           </div>
         </div>
 
         <div class="row">
           <div class="column">
             <label for="padding">Padding</label>
-            <input type="number" min="0" max="16" value="0" id="padding">
+            <div class="range-wrap"><input type="range" min="0" max="8" value="0" id="padding"></div>
           </div>
           <div class="column">
             <label for="dilation">Dilation (<abbr title="How far apart individual filter elements are from each other">?</abbr>)</label>
-            <input type="number" min="1" max="16" value="1" id="dilation">
+            <div class="range-wrap"><input type="range" min="1" max="8" value="1" id="dilation"></div>
           </div>
           <div class="column">
             <label for="stride">Stride (<abbr title="The number of elements by which the filter is displaced">?</abbr>)</label>
-            <input type="number" min="1" max="16" value="1" id="stride">
+            <div class="range-wrap"><input type="range" min="1" max="8" value="1" id="stride"></div>
           </div>
         </div>
       </fieldset>
     </form>
+    </section>
+    <section>
     <h3>Preview</h3>
     <svg id="drawing"></svg>
+    </section>
   </main>
   <footer>
-    <p class="float-right">Last updated: 13.05.2021<br>Samuel G. Fadel</p>
+    <p>Last updated: 14.05.2021<br>Samuel G. Fadel</p>
   </footer>
   <script type="text/javascript">
+    // Set up the output elements showing the value of each slider
+    const ranges = u(".range-wrap");
+    ranges.append("<output>");
+    ranges.each(node => {
+      const range = u(node).children("input");
+      const bubble = u(node).children("output");
+
+      bubble.attr("for", range.first().id);
+      range.on("input", (e) => {
+        bubble.text(e.target.value);
+      });
+      bubble.text(range.first().value);
+    });
+
     const options = {
       inputWidth: 0,
       inputHeight: 0,
@@ -334,7 +435,7 @@
     // Set up events for redrawing whenever the settings change
     for (option in options) {
       const selector = "#" + option;
-      u(selector).on("change", function(e) {
+      u(selector).on("input", function(e) {
         updateOptions();
         updateDrawing();
       });
