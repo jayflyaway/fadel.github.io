@@ -18,6 +18,8 @@
         --bg-color: #f2f5fa;
         --field-color: #e5e9f0;
         --padding-color: #d8dee9;
+        --tooltip-color-bubble: #a8c9ec; /*lightblue*/
+        --tooltip-color-bubble-font: #556bab; /*middleblue*/
       }
     }
 
@@ -28,6 +30,8 @@
         --bg-color: #2e3440;
         --field-color: #3b4252;
         --padding-color: #4c566a;
+        --tooltip-color-bubble: #a8c9ec; /*lightblue*/
+        --tooltip-color-bubble-font: #556bab; /*middleblue*/
       }
     }
 
@@ -35,6 +39,7 @@
       --input-color: #5e81ac; /* blue */
       --filter-color: #bf616a; /* red */
       --output-color: #a3be8c; /* green */
+      --tooltip-with: 20rem;
     }
 
     body {
@@ -167,6 +172,59 @@
     .input-cell:hover, .padding-cell:hover, .filter-cell:hover, .output-cell:hover, .cell-hover {
       opacity: 1.0;
     }
+    .dflex {
+      display: flex;
+    }
+    /* Tooltip container */
+    .tooltip {
+      position: relative;
+      margin-top: 0.2rem;
+      margin-left: 0.7rem;
+      font-size: 1.3rem;
+      color: var(--tooltip-color-bubble-font);
+      background-color: var(--tooltip-color-bubble);
+      width: 2.0rem;
+      height: 2.0rem;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: var(--tooltip-with);
+      font-size: 1.2rem;
+      background-color: var(--field-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 0.5rem 0;
+      border-radius: 0.6rem;
+    
+      /* Position the tooltip text - see examples below! */
+      position: absolute;
+      z-index: 1;
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 0.4rem;
+      margin-left: calc(
+        var(--tooltip-with)   * -0.3
+        ); /* Use ~30% of the width */
+    }
+        
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+}
+    .tooltip .tooltiptext::after {
+      content: " ";
+      position: absolute;
+      top: 100%; /* At the bottom of the tooltip */
+      left: 30%;
+      margin-left: -0.5rem;
+      border-width: 0.5rem;
+      border-style: solid;
+      border-color: var(--field-color) transparent transparent transparent;
+    }
   </style>
 </head>
 <body>
@@ -209,11 +267,23 @@
             <input type="range" min="0" max="8" value="0" id="padding">
           </div>
           <div class="column">
-            <label for="dilation">Dilation (<abbr title="How far apart individual filter elements are from each other">?</abbr>)</label>
+            <label for="dilation" class="dflex">
+              <span>Dilation</span>
+              <div class="tooltip">
+                <span>?</span>
+                <span class="tooltiptext">How far apart individual filter elements are from each other</span>
+              </div>
+            </label>
             <input type="range" min="1" max="8" value="1" id="dilation">
           </div>
           <div class="column">
-            <label for="stride">Stride (<abbr title="The number of elements by which the filter is displaced">?</abbr>)</label>
+            <label for="stride" class="dflex">
+              <span>Stride </span>
+              <div class="tooltip">
+                <span>?</span>
+                <span class="tooltiptext">The number of elements by which the filter is displaced</span>
+              </div>
+            </label>
             <input type="range" min="1" max="8" value="1" id="stride">
           </div>
         </div>
